@@ -210,7 +210,6 @@ const CONFIGURED = true;
         <div class="logo-icon"><svg viewBox="0 0 18 18"><rect x="2" y="1" width="10" height="13" rx="1.5"/><rect x="6" y="4" width="10" height="13" rx="1.5" opacity=".4"/></svg></div>
         <span class="logo-text">InvoiceHub</span>
       </div>
-      
 
       <!-- Sign in -->
       <div id="vi-signin">
@@ -366,7 +365,9 @@ async function init(){
   if(!CONFIGURED){
     document.getElementById('app-load').style.display='none';
     document.getElementById('auth-screen').style.display='block';
-    sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+    return;
+  }
+  sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
   const{data:{session}}=await sb.auth.getSession();
   if(session){user=session.user;showApp();}
   else{document.getElementById('app-load').style.display='none';document.getElementById('auth-screen').style.display='block';}
